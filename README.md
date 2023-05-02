@@ -98,4 +98,38 @@ Add the following line:
 
 8. Reboot the VM.
 
-9. Test that
+9. Tests
+- Check background processes:
+``` ps aux | grep PyKMIP```
+
+## CLIENT SETUP:
+
+Setup PyKMIP Process:
+Installing pyKMIP and dependencies: 
+**Same as server**
+
+Configuration File:
+nano /etc/pykmip/pykmip.conf
+```
+[client]
+host=192.168.64.9 (server’s  VM IP)
+port=5696
+keyfile=/etc/ssl/private/selfsigned.key
+certfile=/etc/ssl/certs/selfsigned.crt
+cert_reqs=CERT_REQUIRED
+ssl_version=PROTOCOL_TLS
+ca_certs=/etc/ssl/certs/ca-certificates.crt
+do_handshake_on_connect=True
+suppress_ragged_eofs=True
+username=pykmip
+password=password
+```
+
+## Client Usage of KMS:
+Go to: https://github.com/OpenKMIP/PyKMIP/tree/master/kmip/demos/pie
+
+You will find many script that you can run from the client VM
+
+## Attributions
+This project makes use of PyKMIP, an open source implementation of the Key Management Interoperability Protocol (KMIP) in Python. PyKMIP is developed by the OpenKMIP project and can be found on GitHub at https://github.com/OpenKMIP/PyKMIP. 
+
